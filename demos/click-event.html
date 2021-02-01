@@ -1,15 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Click events</title>
-</head>
-<body>
-  <h1>Click events</h1>
-  <p>Working with click events in JavaScript</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Click events</title>
+  </head>
+  <body>
+    <h1>Click events</h1>
+    <p>Working with click events in JavaScript</p>
 
-  
+    <div>
+      <button id="target-button" type="button">Click here</button>
+    </div>
 
-</body>
+    <div>
+      <h2>Cities</h2>
+      <ul>
+        <li>New York</li>
+        <li>Boston</li>
+        <li>Chicago</li>
+        <li>San Francisco</li>
+      </ul>
+    </div>
+
+    <script>
+      let buttonRef = document.getElementById('target-button');
+      console.log('buttonRef: ', buttonRef);
+
+      function handleClick() {
+        console.log('You clicked on the button!');
+      }
+
+      // addEventListener(name of event, what to do)
+      // buttonRef.addEventListener('click', () => console.log('You clicked on the button'));
+      buttonRef.addEventListener('click', handleClick);
+
+      /*
+    // Hoisted
+    function handleClick() {
+      console.log('You clicked on the button!');
+    }
+    */
+
+      /*
+    // Not hoisted
+    let handleClick = function() {
+      console.log('You clicked on the button!');
+    }
+    */
+    </script>
+  </body>
 </html>
