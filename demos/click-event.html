@@ -15,7 +15,7 @@
 
     <div>
       <h2>Cities</h2>
-      <ul>
+      <ul id="cities-list">
         <li>New York</li>
         <li>Boston</li>
         <li>Chicago</li>
@@ -24,6 +24,15 @@
     </div>
 
     <script>
+      let listRef = document.getElementById('cities-list');
+      listRef.addEventListener('click', function (event) {
+        console.log('event: ', event);
+        const listItem = event.target;
+        console.log('You clicked on ', listItem);
+        console.log('Your chosen city: ', listItem.textContent);
+        console.log('You clicked on the cities list.');
+      });
+
       let buttonRef = document.getElementById('target-button');
       console.log('buttonRef: ', buttonRef);
 
