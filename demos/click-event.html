@@ -24,7 +24,7 @@
 
     <div>
       <h2>Cities</h2>
-      <ul id="cities-list">
+      <ul id="cities-list" onclick="someEventHandler(event)">
         <li>New York</li>
         <li>Boston</li>
         <li>Chicago</li>
@@ -41,6 +41,12 @@
     <script>
       // Returns an HTMLElement: https://developer.mozilla.org/en-us/docs/Web/API/HTMLElement
       const para = document.getElementById('message-container');
+      // const para = document.querySelector('#message-container');
+
+      function someEventHandler(bar) {
+        console.log('Called via the onclick attribute: ', event);
+      }
+
       let listRef = document.getElementById('cities-list');
       listRef.addEventListener('click', function (event) {
         const listItem = event.target; // same value as returned by getElementById()
