@@ -3,6 +3,7 @@
 
 let cities = ['Boston', 'New York', 'Chicago', 'San Francisco'];
 
+/*
 cities.push('Natick'); // Increase size by one
 let lastCity = cities.pop(); // 'Natick', decrease size by one
 
@@ -19,7 +20,6 @@ cities.splice(1, 0, ...secondElement); // Inserts 'New York', increase size by o
 let deleted = cities.splice(1, 3, 'Natick', 'Waltham', 'Framingham', 'Acton', 'Worcester');
 
 // Iteration
-
 cities.forEach((city) => console.log(city));
 
 for(let x = 0; x < cities.length; x ++) {
@@ -29,9 +29,37 @@ for(let x = 0; x < cities.length; x ++) {
 for (let city of cities) {
   console.log(city);
 }
+*/
+
+let listRef = document.getElementById('cities-list');
+
+function renderList(cities, targetList) {
+  let listItems = '';
+
+  for (let city of cities) {
+    listItems = listItems + `<li>${city}</li>`;
+  }
+
+  targetList.innerHTML = listItems;
+}
+
+renderList(cities, listRef);
+
+const sortLink = document.getElementById('sort-link');
+let sorted = false;
+
+sortLink.addEventListener('click', (event) => {
+  event.preventDefault();
+  if (sorted === false) {
+    cities.sort();
+  } else {
+    cities.reverse();
+  }
+  renderList(cities, listRef);
+  sorted = true;
+});
 
 const para = document.getElementById('message-container');
-let listRef = document.getElementById('cities-list');
 listRef.addEventListener('click', function (event) {
   const listItem = event.target;
   para.hidden = false;
@@ -45,4 +73,3 @@ listRef.addEventListener('click', function (event) {
 document.body.addEventListener('click', function () {
   para.hidden = true;
 });
-
