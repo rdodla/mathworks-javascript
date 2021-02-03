@@ -19,7 +19,7 @@
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
-    "@speedingplanet/rest-server": "0.0.13",
+    "@speedingplanet/rest-server": "0.0.14",
     "prettier": "^2.2.1",
     "serve": "^11.3.2",
     "webpack": "^5.19.0",
