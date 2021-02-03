@@ -14,29 +14,41 @@ function getUsersPromise() {
 }
 
 getUsersPromise().then(function (users) {
-  console.log(`There are ${users.length} users.`);
+  // console.log(`There are ${users.length} users.`);
 });
 
 async function getUsersAsync() {
-  let baseUrl = 'http://localhost:8000/api/zippay/v1/users/';
+  let baseUrl = 'http://localhost:8001/api/zippay/v1/users/';
   let users = [];
 
-  // fetch(baseUrl).then((response) => response.....)
-  let response = await fetch(baseUrl); // 2 (yield)
-  // 5
-  if (response.ok) {
-    users = await response.json();
+  try {
+    let response = await fetch(baseUrl); // 2 (yield)
+    // 5
+    if (response.ok) {
+      users = await response.json();
+    }
+  } catch (err) {
+    console.log('getUsersAsync: problems: ', err);
+    // return Promise.reject(err);
+    throw err;
   }
 
+  console.log('getUsersAsync(): still running');
   return users;
 }
 
 async function main() {
-  // let users = await getUsersAsync();
-  let users = await getUsersPromise();
-  let numbers = await doSomething();
-  console.log('Awaited numbers: ', numbers);
-  console.log(`(async-await) There are ${users.length} users.`);
+  let users;
+  try {
+    // let users = await getUsersAsync();
+    users = await getUsersAsync();
+    // let numbers = await doSomething();
+  } catch (err) {
+    console.error('main: problems: ', err);
+  }
+  // console.log('Awaited numbers: ', numbers);
+  // console.log(`(async-await) There are ${users.length} users.`);
+  console.log(`(async-await) Users: `, users);
 }
 
 function doSomething() {
