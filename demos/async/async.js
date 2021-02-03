@@ -1,11 +1,3 @@
-let baseUrl = 'http://localhost:8000/api/zippay/v1/users/';
-
-let resultsPromise = fetch(baseUrl);
-
-resultsPromise.then(function (results) {
-  console.log('Finished the request, got results!');
-});
-
 // Promise API
 // promise.then(successCallback, failureCallback)
 //              (resolved)       (rejected)
@@ -39,15 +31,35 @@ resultsPromise.then(function (results) {
 
 // promise.finally(() => {})
 
-// Do other stuff until the fetch comes back
+let baseUrl = 'http://localhost:8001/api/zippay/v1/users/';
+
+let responsePromise = fetch(baseUrl);
+
+responsePromise
+  .then(
+    function (response) {
+      if (response.ok) {
+        // return response.json();
+        return 10;
+      } else {
+        throw new Error('Bad Response!');
+      }
+    },
+    function (responseError) {
+      console.log('fetch error handler');
+      // How to pass on a rejected Promise
+      return Promise.reject(responseError);
+      // throw new Error(responseError);
+    }
+  )
+  .catch(function (err) {
+    // Can see errors from fetch or responsePromise.then()
+  })
+  .then(function (results) {
+    console.log('Results: ', results);
+  })
+  .catch(function (err) {
+    console.error('Something went wrong! ', err);
+  });
+
 console.log('After calling fetch()');
-
-try {
-  // 1
-  // 2
-  // 3
-} catch (err) {
-  // First thing that went wrong in 1, 2, or 3.
-}
-
-// 4
