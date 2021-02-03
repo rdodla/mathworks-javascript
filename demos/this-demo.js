@@ -2,14 +2,14 @@
 let object = {
   x: 10,
   foo() {
-    console.log('Called foo, x is ', this.x);
+    console.log('Called foo(), x is', this.x);
   },
   bar() {
-    console.log('Calling foo from within bar:');
+    console.log('Calling foo() from within bar():');
     this.foo();
   },
   baz() {
-    console.log('Calling baz, which defines a subfunction which calls foo()');
+    console.log('Calling baz(), which defines a subfunction which calls foo()');
     function inner() {
       console.log('baz() inner function, x is ', this.x);
       this.foo();
@@ -26,6 +26,7 @@ let object = {
   },
 };
 
+/*
 object.foo(); // Works
 object.bar(); // Works
 object.arrow();
@@ -35,6 +36,36 @@ object.arrow();
 
 // Practical demo
 // Need to have rest-server running for this to work
+*/
+
+let myFunction = () => {};
+function myFunction2() {}
+
+class PeopleManager {
+  constructor() {
+    this.people = [
+      /* person objects */
+    ];
+  }
+
+  doSomethingWithPeople() {
+    this.people.map((person) => {
+      person.family.map((familyMember) => {
+        this.doOtherThingWithPeople(familyMember);
+      });
+    });
+  }
+
+  doSomethingWithPeople2() {
+    this.people.map(function (person) {
+      person.family.map(function (familyMember) {
+        // No longer class-level this
+      });
+    });
+  }
+
+  doOtherThingWithPeople() {}
+}
 
 let dao = {
   fetchPerson() {
@@ -43,7 +74,7 @@ let dao = {
       response
     ) {
       if (response.ok) {
-        response.json().then((person) => {
+        response.json().then(function (person) {
           console.log(`Fetched user ${person.displayName}`);
         });
       }
@@ -74,6 +105,6 @@ let dao = {
   },
 };
 
-dao.fetchPerson();
+// dao.fetchPerson();
 dao.fetchPersonArrow();
-dao.fetchPersonThenRender();
+// dao.fetchPersonThenRender();
