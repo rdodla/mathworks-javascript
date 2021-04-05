@@ -27,26 +27,6 @@
         Instead of printing the value of the form field in the console, print it 
         to an element in the DOM. 
       -->
-
-      <input type="text" id="target" />
-      <button id="capture-button" type="button">Print</button>
     </div>
-
-    <div><span id="results"></span></div>
-
-    <script>
-      let button = document.getElementById('capture-button');
-      let textField = document.getElementById('target');
-      let resultsSpan = document.getElementById('results');
-
-      textField.addEventListener('input', (event) => {
-        resultsSpan.textContent = `You typed ${event.target.value} in the text field.`;
-      });
-
-      button.addEventListener('click', (event) => {
-        console.log(`You typed ${textField.value} in the text field.`);
-        resultsSpan.textContent = `You typed ${textField.value} in the text field.`;
-      });
-    </script>
   </body>
 </html>
