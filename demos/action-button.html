@@ -8,13 +8,20 @@
   </head>
   <body>
     <div>
-      <label>Click to be greeted:</label> <input type="text" id="greet-name" />
+      <label for="greet-name">Click to be greeted:</label>
+      <input type="text" id="greet-name" />
       <button id="greet-button">Greet me</button>
       <p id="greet-output"></p>
     </div>
     <hr />
     <div>
-      <label>Instant greetings:</label> <input type="text" id="instant-name" />
+      <label for="instant-name">Instant greetings:</label>
+      <input type="text" id="instant-name" />
+    </div>
+    <hr />
+    <div>
+      <label for="adjacent-name">Adjacent greetings:</label>
+      <input type="text" id="adjacent-name" />
     </div>
     <hr />
     <div>
@@ -23,7 +30,6 @@
     </div>
 
     <script>
-      const button = document.getElementById('target-button');
       /*
       keydown
       keyup
@@ -39,14 +45,24 @@
       });
       */
 
-      const greetButton = document.getElementById('greet-button');
-
-      greetButton.addEventListener('click', () => {
+      function greetHandler() {
         const greetInput = document.getElementById('greet-name');
         const name = greetInput.value;
         const greetOutput = document.getElementById('greet-output');
+        // greetOutput.innerText = 'Hello, ' + name;
         greetOutput.innerText = `Hello, ${name}`;
-      });
+      }
+
+      const greetButton = document.getElementById('greet-button');
+      greetButton.addEventListener('click', greetHandler);
+      document
+        .getElementById('greet-name')
+        .addEventListener('keyup', (event) => {
+          if (event.code !== 'Enter') {
+            return;
+          }
+          greetHandler();
+        });
 
       /*
       const instantInput = document.getElementById('instant-name');
@@ -60,8 +76,8 @@
       document
         .getElementById('instant-name')
         .addEventListener('input', (event) => {
-          const parentElement = event.target.parentElement;
           let p;
+          const parentElement = event.target.parentElement;
           if (parentElement.lastElementChild.tagName.toUpperCase() !== 'P') {
             p = document.createElement('p');
             parentElement.append(p);
@@ -72,13 +88,40 @@
         });
 
       document
+        .getElementById('adjacent-name')
+        .addEventListener('input', (event) => {
+          const textField = event.target;
+          let output = textField.nextElementSibling;
+          if (!output || output.tagName !== 'P') {
+            output = textField.insertAdjacentElement(
+              'afterend',
+              document.createElement('p')
+            );
+          }
+          output.innerText = textField.value;
+        });
+
+      /*
+                  let output = document.getElementById('adjacent-output');
+          if (!output) {
+            output = textField.insertAdjacentElement(
+              'afterend',
+              document.createElement('p')
+            );
+            output.id = 'adjacent-output';
+          }
+          */
+
+      document
         .getElementById('enter-name')
         .addEventListener('keyup', (event) => {
           if (event.code !== 'Enter') {
             return;
           }
           const enterOutput = document.getElementById('enter-output');
-          enterOutput.innerText = `Only on Enter: ${event.target.value}.`;
+          if (event.target.value.length > 0) {
+            enterOutput.innerText = `Only on Enter: ${event.target.value}.`;
+          }
         });
 
       /*
