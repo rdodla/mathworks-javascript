@@ -14,8 +14,10 @@ module.exports = {
     indent: [ 'error', 2, { MemberExpression: 1 } ],
     'object-curly-spacing': [ 'error', 'always' ],
     'space-in-parens': [ 'error', 'always' ],
-    'object-property-newline': [ 'error',
-      { allowAllPropertiesOnSameLine: true } ],
+    'object-property-newline': [
+      'error',
+      { allowAllPropertiesOnSameLine: true },
+    ],
   },
   ignorePatterns: [ 'node_modules' ],
 };
