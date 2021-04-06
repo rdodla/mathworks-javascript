@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Working with lists</title>
+  </head>
+  <body>
+    <header>
+      <h1>Working with lists</h1>
+    </header>
+
+    <div>
+      <ul id="output"></ul>
+    </div>
+
+    <script>
+      const li = document.createElement('li');
+      li.innerText = 'Test list item';
+
+      const ul = document.getElementById('output');
+      ul.append(li);
+      ul.insertAdjacentHTML('beforeend', '<li>Another element</li>');
+
+      // Add the elements of this array to the unordered list "output" above
+      // Each element in the array should be a list item <li>
+      // Use any looping structure you prefer
+      const materials = [
+        'canvas',
+        'acrylics',
+        'brushes',
+        'turpentine',
+        'frame',
+      ];
+    </script>
+  </body>
+</html>
