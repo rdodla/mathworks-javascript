@@ -12,27 +12,70 @@
     </header>
 
     <div>
+      <div>
+        <!-- 
+          How can we add JavaScript code such that when the "Add Item" button
+          is clicked, the item is added to the list of materials? 
+
+          The item can be added to the end or beginning of the unordered list, no 
+          need to sort it. (It should be sorted the next time the "Sort"
+          button is clicked, of course.)
+         -->
+
+        <label for="add-item">Append an item:</label>
+        <input type="text" id="add-item" />
+        <button id="add-button">Add item</button>
+      </div>
       <ul id="output"></ul>
+      <button id="sort-button">Sort</button>
     </div>
 
     <script>
-      const li = document.createElement('li');
-      li.innerText = 'Test list item';
-
-      const ul = document.getElementById('output');
-      ul.append(li);
-      ul.insertAdjacentHTML('beforeend', '<li>Another element</li>');
-
-      // Add the elements of this array to the unordered list "output" above
-      // Each element in the array should be a list item <li>
-      // Use any looping structure you prefer
       const materials = [
         'canvas',
         'acrylics',
         'brushes',
         'turpentine',
         'frame',
+        'brushes',
       ];
+
+      const ul = document.getElementById('output');
+
+      let items = materials.map((material) => {
+        const li = document.createElement('li');
+        li.innerText = material;
+        return li;
+      });
+
+      ul.append(...items);
+
+      // TODO: get rid of items, use ul>li as the only container for data
+      let reverseIt = false;
+      document.getElementById('sort-button').addEventListener('click', () => {
+        console.log('Sort the items');
+        if (reverseIt) {
+          items.reverse();
+        } else {
+          items.sort((a, b) =>
+            a.innerText.toUpperCase() < b.innerText.toUpperCase() ? -1 : 1
+          );
+        }
+        ul.replaceChildren(...items);
+        reverseIt = !reverseIt;
+      });
+
+      document.getElementById('add-button').addEventListener('click', () => {
+        let textField = document.getElementById('add-item');
+        if (textField.value === '') return;
+        let item = textField.value;
+        textField.value = '';
+
+        const li = document.createElement('li');
+        li.innerText = item;
+        items.push(li);
+        ul.append(li);
+      });
     </script>
   </body>
 </html>
