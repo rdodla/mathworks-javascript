@@ -12,6 +12,9 @@
       .underline {
         text-decoration: underline;
       }
+      .red {
+        background-color: red;
+      }
     </style>
   </head>
   <body>
@@ -118,6 +121,12 @@
         );
         checked.forEach((item) => {
           item.parentElement.classList.toggle('underline');
+        });
+        let unchecked = document.querySelectorAll(
+          '#output input[type=checkbox]:not(:checked)'
+        );
+        unchecked.forEach((item) => {
+          item.parentElement.classList.add('red');
         });
       });
     </script>
