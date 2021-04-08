@@ -1,17 +1,15 @@
+/* eslint-disable */
 export class Vehicle {
-  make = 'Default make';
-  model = 'Default model';
-  color = 'red';
-
   static vin = 0;
 
-  /*
-  constructor(make, model) {
+  constructor(make = 'Default make', model = 'Default model') {
     this.make = make;
     this.model = model;
+    this.color = 'red';
+    this.speed = 0;
   }
-  */
 
+  /*
   constructor(config = {}) {
     this.make = config.make || this.make;
     this.model = config.model || this.model;
@@ -25,9 +23,14 @@ export class Vehicle {
     this.odometer = 0;
     this.mileage = 0;
   }
+  */
 
   getMake() {
     return this.make;
+  }
+
+  toString() {
+    return `${this.make} ${this.model}`;
   }
 
   get vin() {
@@ -40,9 +43,5 @@ export class Vehicle {
 
   get mileage() {
     return this.odometer;
-  }
-
-  toString() {
-    return `${this.make} ${this.model}`;
   }
 }

@@ -31,35 +31,35 @@
 
 // promise.finally(() => {})
 
-let baseUrl = 'http://localhost:8001/api/zippay/v1/users/';
+const baseUrl = 'http://localhost:8001/api/zippay/v1/users/';
 
-let responsePromise = fetch(baseUrl);
+const responsePromise = fetch( baseUrl );
 
 responsePromise
   .then(
-    function (response) {
-      if (response.ok) {
+    function( response ) {
+      if ( response.ok ) {
         // return response.json();
         return 10;
       } else {
-        throw new Error('Bad Response!');
+        throw new Error( 'Bad Response!' );
       }
     },
-    function (responseError) {
-      console.log('fetch error handler');
+    function( responseError ) {
+      console.log( 'fetch error handler' );
       // How to pass on a rejected Promise
-      return Promise.reject(responseError);
+      return Promise.reject( responseError );
       // throw new Error(responseError);
-    }
+    },
   )
-  .catch(function (err) {
+  .catch( function( err ) {
     // Can see errors from fetch or responsePromise.then()
-  })
-  .then(function (results) {
-    console.log('Results: ', results);
-  })
-  .catch(function (err) {
-    console.error('Something went wrong! ', err);
-  });
+  } )
+  .then( function( results ) {
+    console.log( 'Results: ', results );
+  } )
+  .catch( function( err ) {
+    console.error( 'Something went wrong! ', err );
+  } );
 
-console.log('After calling fetch()');
+console.log( 'After calling fetch()' );

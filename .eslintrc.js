@@ -3,6 +3,11 @@ module.exports = {
     browser: true,
     node: true,
   },
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    requireConfigFile: false,
+  },
+  plugins: [ '@babel' ],
   extends: [ 'standard', 'standard-with-typescript' ],
   rules: {
     semi: [ 'error', 'always' ],
@@ -18,6 +23,7 @@ module.exports = {
       'error',
       { allowAllPropertiesOnSameLine: true },
     ],
+    '@babel/semi': 'warn',
   },
   ignorePatterns: [ 'node_modules' ],
 };
