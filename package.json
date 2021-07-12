@@ -1,7 +1,7 @@
 {
   "name": "mathworks-javascript",
   "version": "1.1.0",
-  "description": "Class files for MathWorks' Introduction to JavaScript course",
+  "description": "Class files for MathWorks' July 2021 Introduction to JavaScript course",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
