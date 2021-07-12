@@ -1,4 +1,10 @@
-import someVal, { x } from './exports-default.js';
+/* eslint-disable no-unused-vars, import/no-duplicates */
 
-// Effectively import someVal as aliasedVal from ...
-import aliasedVal from './exports-default.js';
+// Import default, typical
+import person from './exports-default.js';
+
+// Import default, but rename it
+import john from './exports-default.js';
+
+// Import default and something else
+import person2, { x } from './exports-default.jsÎ';

@@ -1,21 +1,27 @@
 /* eslint-disable */
+
+// Import one item; typical
 import { x } from './exports.js';
-x; // 10
+console.log(x); // 10
 
+// Import multiple items; typical
+import { a, d } from './exports.js';
+
+// Import and rename
 import { b as bee } from './exports.js';
-bee; // 2
+console.log(bee); // 2
 
+// Rename one, not the other
 import { x as q, y } from './exports.js';
 console.log(q + y);
 
+// Import everything into a namespace
 import * as foo from './exports.js';
-foo.x; // 10
-
-import './exports.js'; // Runs exports.js, does not import any values
-
-import {} from './exports.js';
-
+console.log(foo.x); // 10
 console.log('foo is ', foo);
 
-// Practically, you're using these most of the time:
-import { a, b, c } from './exports.js';
+// Runs exports.js, does not import any values
+import './exports.js';
+
+// Empty import, pointless
+import {} from './exports.js';

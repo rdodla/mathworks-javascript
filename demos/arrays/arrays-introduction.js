@@ -1,18 +1,21 @@
+/* eslint-disable no-unused-vars */
+
 const states = [ 'NJ', 'MA', 'CA', 'IL', 'FL' ];
 
-// End of the array
+// Assign directly to an index.
+states[3] = 'AK';
+
+// Add to the end of the array
 states.push( 'WA', 'TX' );
 
 // states is now one element shorter
 const lastElement = states.pop();
 
-// Beginning or front of the array
+// Add to the beginning or front of the array
+states.unshift( 'CT' );
+
 // states is another element shorter
 const firstElement = states.shift();
-
-states.unshift( firstElement, lastElement );
-
-states[3] = 'AK';
 
 // states.splice(start, length, replacement?);
 // Delete two elements
@@ -21,5 +24,5 @@ states.splice( 1, 2 );
 // Insert three elements at position 2
 states.splice( 2, 0, 'AR', 'AZ', 'CO' );
 
-// Delete one element at position 4
-states.splice( 4, 1 );
+// Replace the element at position 4
+states.splice( 4, 1, 'DE' );

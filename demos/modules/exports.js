@@ -1,25 +1,23 @@
-const x = 10;
-export { x };
+/* eslint-disable no-unused-vars */
 
 // Should run only once.
 console.log( 'Ran exports.js' );
-
-// Almost like "public const y = 20"
-export const y = 20;
 
 const a = 1;
 const b = 2;
 const c = 3;
 const d = [ 1, 2, 3 ];
 
-// Copies by reference
-const e = [ ...d ];
+const x = 10;
 
-d.push( 6 );
-console.log( e[3] ); // Does not exist, but does not throw an error (!)
+// Export list
+export { x, a, d };
 
+// In-line export
+// Almost like "public const y = 20"
+export const y = 20;
+
+// In-line export a function, or a class
 export function bar() {
   console.log( 'exports.bar()' );
 }
-
-export { a, b, c, e };
