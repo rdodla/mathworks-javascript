@@ -39,6 +39,13 @@ const generatePersonArrow = ( firstName, lastName ) => ( {
   lastName: lastName,
 } );
 
+const generatePersonArrowWithReturn = ( firstName, lastName ) => {
+  return {
+    firstName: firstName,
+    lastName: lastName,
+  };
+};
+
 const filter = ( value ) => ( value > 10 ? value : value + 10 );
 
 // Terrible, but valid
