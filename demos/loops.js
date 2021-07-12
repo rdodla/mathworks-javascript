@@ -7,6 +7,8 @@ while ( x < 10 ) {
 // Initialize your counter!
 for ( let y = 0; y < 10; y++ ) {
   // Whatever
+  // break to stop
+  // continue to skip this iteration
 }
 
 const obj = {
