@@ -22,7 +22,8 @@ npm start
 
 ## Commands
 
-`npm start` - Start the class server
+`npm start` - Start the class server  
+
 `npm run rest-server` Start the REST data server for the class
 
 ## Links
