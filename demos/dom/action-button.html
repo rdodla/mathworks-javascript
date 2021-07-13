@@ -30,26 +30,10 @@
     </div>
 
     <script>
-      /*
-      keydown
-      keyup
-      change
-      input -> picks up every keypress, easier than keydown/keyup
-      */
-
-      /*
-      button.addEventListener('click', function () {
-        const textInput = document.getElementById('your-name');
-        const name = textInput.value;
-        console.log(`Hello, ${name}`);
-      });
-      */
-
       function greetHandler() {
         const greetInput = document.getElementById('greet-name');
         const name = greetInput.value;
         const greetOutput = document.getElementById('greet-output');
-        // greetOutput.innerText = 'Hello, ' + name;
         greetOutput.innerText = `Hello, ${name}`;
       }
 
@@ -101,17 +85,6 @@
           output.innerText = textField.value;
         });
 
-      /*
-                  let output = document.getElementById('adjacent-output');
-          if (!output) {
-            output = textField.insertAdjacentElement(
-              'afterend',
-              document.createElement('p')
-            );
-            output.id = 'adjacent-output';
-          }
-          */
-
       document
         .getElementById('enter-name')
         .addEventListener('keyup', (event) => {
@@ -124,21 +97,6 @@
           }
         });
 
-      /*
-      TODOS:
-        Update greeting on <Enter> DONE
-        Add greeting element on-the-fly DONE
-        Add greeting element adjacently and functionally (Tuesday morning)
-        */
-
-      /*
-      button.addEventListener('mouseenter', function () {
-        button.innerText = "Don't click on me";
-      });
-      button.addEventListener('mouseleave', function () {
-        button.innerText = 'Click on me';
-      });
-      */
     </script>
   </body>
 </html>
