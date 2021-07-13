@@ -16,7 +16,7 @@ const statesContainA = states.some( ( item, index, array ) => {
     // Keep looping
     return false;
   } else {
-    // Stop looping
+    // Stop looping, effectively a break
     return true;
   }
 } );
@@ -30,6 +30,12 @@ const statusLengthTwo = states.every( ( item, index, array ) => {
     return false;
   }
 } );
+
+// Returns an array of matches, [] if none
+const filteredStates = states.filter( ( state ) => state.contains( 'A' ) );
+
+// Returns the first matching item, null if none
+const firstStateWithA = states.find( ( state ) => state.contains( 'A' ) );
 
 // Iterate over every element in the array, do something to it,
 // Return a new array with the processed results
@@ -57,7 +63,9 @@ const badMappedPeople = people.map( ( person ) => {
 // Better
 const mappedPeople = people.map( ( person ) => {
   // Shallow copy!
-  const copiedPerson = { ...person };
+  // const copiedPerson = { ...person };
+  const copiedPerson = Object.assign( {}, person );
+
   copiedPerson.state = copiedPerson.state.toLowerCase();
   return copiedPerson;
 } );

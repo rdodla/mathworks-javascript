@@ -31,6 +31,24 @@ for ( const key in person ) {
   // Whatever
 }
 
+// enumerable: does this key show up in a loop?
+// configurable: can we call defineProperty() on this key?
+// writeable: can this value be changed?
+
+// eslint-disable-next-line max-len
+// More here: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty#description
+
+Object.keys( person )
+  .filter( ( key ) => typeof person[key] === 'function' )
+  .forEach( ( key ) => {
+    Object.defineProperty( person, key, { enumerable: false } );
+  } );
+
+Object.defineProperty( person, 'someMethod', {
+  enumerable: false,
+  value: () => console.log( 'Some method' ),
+} );
+
 // Destructuring
 const { firstName, lastName } = person;
 
