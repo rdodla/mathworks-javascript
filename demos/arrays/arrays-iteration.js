@@ -69,3 +69,8 @@ const mappedPeople = people.map( ( person ) => {
   copiedPerson.state = copiedPerson.state.toLowerCase();
   return copiedPerson;
 } );
+
+const numbers = [ 1, 2, 3, 4, 5, 6, 7 ];
+const sum = numbers.reduce( ( previous, current, index, array ) => {
+  return previous + current;
+}, 0 );
