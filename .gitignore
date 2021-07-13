@@ -8,3 +8,4 @@ tmp/
 # Uncomment to never check anything into main/
 # main/*.html
 # main/*.js
+.vscode
