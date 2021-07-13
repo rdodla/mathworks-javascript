@@ -4,6 +4,8 @@ const person = {
   lastName: 'Paxton',
   city: 'Nutley',
   state: 'NJ',
+
+  // Different ways to add a function
   getState() {
     return this.state;
   },
@@ -29,7 +31,11 @@ for ( const key in person ) {
   // Whatever
 }
 
+// Destructuring
 const { firstName, lastName } = person;
+
+// Identifiers: $, _, or alphabetical character, followed by $, _, alphanumeric
+// $, _, $foo, _foo, foo, bar, baz, something_complicated;
 
 const state = {
   aString: '',
@@ -52,26 +58,3 @@ const state = {
 
 state['some spaces'];
 state.aString;
-
-// Identifiers: $, _, or alphabetical character, followed by $, _, alphanumeric
-// $, _, $foo, _foo, foo, bar, baz, something_complicated;
-
-const passedInConfiguration = {
-  data: cities,
-  color: 'blue',
-  onClick: 'whatever',
-  onHover: 'something Else',
-};
-const cityTable = new Table( passedInConfiguration );
-
-// In Table
-const defaults = {
-  data: [],
-  color: 'green',
-  onClick: null,
-  onHover: null,
-  columns: [],
-  otherThing: {},
-};
-
-const config = { ...defaults, ...passedInConfiguration };

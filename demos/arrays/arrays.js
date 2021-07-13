@@ -43,7 +43,7 @@ cities.indexOf( 'Wor' );
 cities.includes( 'Natick' );
 
 'Supercallifragilisticexpialidocious'.indexOf( 'e', 4 );
-'Supercallifragilisticexpialidocious'.includes( 'quiet' );
+'Supercallifragilisticexpialidocious'.includes( 'quiet' ); // false
 
 cities.filter( ( city ) => city.includes( 'W' ) );
 cities.find( ( city ) => city.includes( 'W' ) );
@@ -55,8 +55,8 @@ console.log( 'Sorted cities: ', cities );
 const westCoastCities = [ 'Los Angeles', 'San Francisco', 'Portland', 'Seattle' ];
 console.log( 'Merged cities: ', [ ...cities, ...westCoastCities ] );
 
-cities.push( '', ...westCoastCities );
-console.log( 'Cities, maybe not as expected: ', cities );
+// Adding individual elements of an array
+cities.push( ...westCoastCities );
 
 // Array.from(), Array.isArray();
 Array.isArray( cities );
@@ -64,16 +64,6 @@ Array.isArray( cities );
 const listRef = document.getElementById( 'cities-list' );
 
 function renderList( cities, targetList ) {
-  /*
-  let listItems = '';
-
-  for (let city of cities) {
-    listItems = listItems + `<li>${city}</li>`;
-  }
-  */
-
-  //  targetList.innerHTML = cities.map((city) => `<li>${city}</li>`).join('\n');
-
   const citiesAsListItems = cities.map( ( city ) => `<li>${city}</li>` );
   const citiesString = citiesAsListItems.join( '' );
   targetList.innerHTML = citiesString;
