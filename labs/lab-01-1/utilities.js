@@ -1,5 +1,5 @@
-const looper = ( user, names ) => {
+export const looper = ( user, names ) => {
   names.push( user.displayName );
 };
 
-export { looper };
+// export { looper };
